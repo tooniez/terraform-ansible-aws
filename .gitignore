@@ -1,0 +1,9 @@
+.DS_Store
+*.retry
+*.tfstate*
+*.tfstate.backup*
+*.tfvars
+*.terraform
+*.terraform.lock.hcl
+*.ansible-cache
+*.ansible-connection-cache
