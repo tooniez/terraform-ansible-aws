@@ -1,0 +1,11 @@
+pub_key_path = "~/.ssh/tooniez.pub"
+private_key_path = "~/.ssh/tooniez"
+key_name = "tooniez"
+
+web_server_params {
+  count = "1"
+}
+
+db_server_params {
+  count = "1"
+}
