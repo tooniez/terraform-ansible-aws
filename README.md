@@ -71,6 +71,8 @@ Before using this project:
 - `cloudfront`: Sets up CloudFront distribution
 - `route53`: Manages Route53 DNS records
 - `iam`: Configures IAM roles and policies
+- `kafka`: Provisions an Amazon MSK (Managed Streaming for Kafka) cluster
+- `sqs`: Creates an Amazon SQS (Simple Queue Service) queue
 
 Each module has its own `main.tf`, `variables.tf`, and `outputs.tf` files.
 
