@@ -31,7 +31,7 @@ variable key_name {
   description = "Name of ssh key to create"
 }
 
-variable "instance_count" {
+variable instance_count {
   description = "Number of instances to create"
   type        = number
   default     = 1
