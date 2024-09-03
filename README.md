@@ -63,6 +63,14 @@ Before using this project:
 - `key_pair`: Manages SSH key pair
 - `web`: Provisions web servers
 - `db`: Provisions database servers
+- `vpc`: Creates and configures the VPC
+- `alb`: Sets up Application Load Balancer
+- `asg`: Configures Auto Scaling Group
+- `rds`: Provisions RDS database
+- `s3`: Creates and configures S3 bucket
+- `cloudfront`: Sets up CloudFront distribution
+- `route53`: Manages Route53 DNS records
+- `iam`: Configures IAM roles and policies
 
 Each module has its own `main.tf`, `variables.tf`, and `outputs.tf` files.
 
