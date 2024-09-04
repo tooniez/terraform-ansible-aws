@@ -1,0 +1,45 @@
+---
+
+- hosts: aws_tag_Group=dev_web_cluster
+  gather_facts: false
+  become: yes
+
+  pre_tasks:
+  - name: Install python for Ansible
+    raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+    changed_when: False
+
+  tasks:
+  - name: Update apt package index
+    apt:
+      update_cache: yes
+
+  - name: Install required packages for Docker
+    apt:
+      name:
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - software-properties-common
+      state: present
+
+  - name: Add Docker's official GPG key
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+
+  - name: Add Docker's official APT repository
+    apt_repository:
+      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
+      state: present
+
+  - name: Install Docker
+    apt:
+      name: docker-ce
+      state: present
+
+  - name: Start and enable Docker service
+    service:
+      name: docker
+      state: started
+      enabled: yes

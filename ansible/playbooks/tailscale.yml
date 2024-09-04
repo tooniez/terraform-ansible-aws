@@ -1,0 +1,25 @@
+---
+- hosts: aws_tag_Group=dev_web_cluster
+  gather_facts: false
+  become: yes
+
+  pre_tasks:
+  - name: Install python for Ansible
+    raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+    changed_when: False
+
+  tasks:
+  - name: Update apt package index
+    apt:
+      update_cache: yes
+
+  - name: Install Tailscale
+    apt:
+      name: tailscale
+      state: present
+
+  - name: Start Tailscale service
+    service:
+      name: tailscale
+      state: started
+      enabled: yes

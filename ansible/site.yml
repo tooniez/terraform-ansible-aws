@@ -1,4 +1,7 @@
 ---
 
-- include: playbooks/db.yml
-- include: playbooks/web.yml
+- include: playbooks/apache.yml
+- include: playbooks/docker.yml
+- include: playbooks/mysql.yml
+- include: playbooks/portainer.yml
+- include: playbooks/tailscale.yml

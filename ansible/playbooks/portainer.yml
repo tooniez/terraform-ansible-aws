@@ -1,0 +1,34 @@
+---
+
+- hosts: aws_tag_Group=dev_web_cluster
+  gather_facts: false
+  become: yes
+
+  pre_tasks:
+  - name: Install python for Ansible
+    raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+    changed_when: False
+
+  tasks:
+  - name: Pull Portainer image
+    docker_image:
+      name: portainer/portainer-ce
+      tag: latest
+      source: pull
+
+  - name: Create Portainer container
+    docker_container:
+      name: portainer
+      image: portainer/portainer-ce:latest
+      state: started
+      restart_policy: always
+      published_ports:
+        - "9000:9000"
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - portainer_data:/data
+
+  - name: Create Portainer data volume
+    docker_volume:
+      name: portainer_data
+      state: present
