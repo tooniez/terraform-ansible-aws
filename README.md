@@ -82,8 +82,11 @@ Each module has its own `main.tf`, `variables.tf`, and `outputs.tf` files.
 - `site.yml`: Main playbook that includes other playbooks
 - `dynamic_inventory.sh`: Script that retrieves tfstate from S3 to generate inventory
 - `playbooks/`:
-  - `web.yml`: Playbook for web servers
-  - `db.yml`: Playbook for database servers
+  - `docker.yml`: Playbook for Docker installation
+  - `mysql.yml`: Playbook for MySQL installation
+  - `apache.yml`: Playbook for Apache installation
+  - `portainer.yml`: Playbook for Portainer installation
+  - `tailscale.yml`: Playbook for Tailscale installation
 
 ## Infrastructure Overview 🏗️
 
@@ -95,8 +98,11 @@ This project sets up the following AWS resources:
 ## Ansible Configuration 🔧
 
 Ansible is used to configure the provisioned instances:
-- Web servers: Installs and configures Apache
-- Database servers: Installs and configures MySQL
+- Apache: Installs and configures Apache
+- Mysql: Installs and configures MySQL
+- Docker: Installs Docker and sets up containers
+- Portainer: Installs Portainer for container management
+- Tailscale: Installs Tailscale for secure networking
 
 ## Important Notes 📌
 
